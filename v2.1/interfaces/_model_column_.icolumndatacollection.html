@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Column Collection for readonly IColumnData objects.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -78,12 +85,6 @@
 							</li>
 						</ul>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_model_column_.columndatacoll.html" class="tsd-signature-type">ColumnDataColl</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -99,7 +100,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="_model_column_.icolumndatacollection.html#getcolumnbyoffset" class="tsd-kind-icon">get<wbr>Column<wbr>ByOffset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="_model_column_.icolumndatacollection.html#getcolumns" class="tsd-kind-icon">get<wbr>Columns</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="_model_column_.icolumndatacollection.html#getcolumnsbytxid" class="tsd-kind-icon">get<wbr>Columns<wbr>ByTx<wbr>Id</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="_model_column_.icolumndatacollection.html#merge" class="tsd-kind-icon">merge</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,13 +118,21 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_model_column_.icolumncollection.html">IColumnCollection</a>.<a href="_model_column_.icolumncollection.html#filter">filter</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L110">model.column.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L139">model.column.ts:139</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Filter from the Column Collection based on criteria.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>filterFunc: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Callback with filter criteria.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -166,13 +174,21 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_model_column_.icolumncollection.html">IColumnCollection</a>.<a href="_model_column_.icolumncollection.html#getcolumnbyid">getColumnById</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L104">model.column.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L121">model.column.ts:121</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets a Column by ID.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>columnId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Column ID to fetch.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_column_.icolumndata.html" class="tsd-signature-type">IColumnData</a></h4>
@@ -190,13 +206,21 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_model_column_.icolumncollection.html">IColumnCollection</a>.<a href="_model_column_.icolumncollection.html#getcolumnbyindex">getColumnByIndex</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L107">model.column.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L128">model.column.ts:128</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a Column by its index in the collection.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>index: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Index of the Column being searched.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_column_.icolumndata.html" class="tsd-signature-type">IColumnData</a></h4>
@@ -214,16 +238,27 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_model_column_.icolumncollection.html">IColumnCollection</a>.<a href="_model_column_.icolumncollection.html#getcolumnbyoffset">getColumnByOffset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L108">model.column.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L134">model.column.ts:134</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a Column based on an offset with respect to another column in the collection.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>columnId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Reference Column</p>
+									</div>
 								</li>
 								<li>
 									<h5>offset: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Offset with respect to the Reference Column</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_column_.icolumndata.html" class="tsd-signature-type">IColumnData</a></h4>
@@ -241,9 +276,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_model_column_.icolumncollection.html">IColumnCollection</a>.<a href="_model_column_.icolumncollection.html#getcolumns">getColumns</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L105">model.column.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L123">model.column.ts:123</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets all Columns</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_model_column_.icolumndata.html" class="tsd-signature-type">IColumnData</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
@@ -258,42 +298,30 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L115">model.column.ts:115</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.column.ts#L150">model.column.ts:150</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get Columns in a collection with respect to a Transaction ID and Active/ Inactive state.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>txId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Transaction ID with respect to which Columns are fetched.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> includeInactive: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Whether inactive columns should be included.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_column_.icolumndata.html" class="tsd-signature-type">IColumnData</a><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="merge" class="tsd-anchor"></a>
-					<h3>merge</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">merge<span class="tsd-signature-symbol">(</span>pColumns<span class="tsd-signature-symbol">: </span><a href="_model_column_.columnfields.html" class="tsd-signature-type">ColumnFields</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b4f53df/typescript/src/model.column.ts#L116">model.column.ts:116</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>pColumns: <a href="_model_column_.columnfields.html" class="tsd-signature-type">ColumnFields</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -342,12 +370,6 @@
 						<a href="../modules/_model_tx_.html">"model.tx"</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_restapi_.html">"rest<wbr>Api"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_restapi_adapters_.html">"rest<wbr>Api.adapters"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/_typescript_fetch_client_generated_api_.html">"typescript-<wbr>fetch-<wbr>client-<wbr>generated/api"</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
@@ -357,18 +379,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-external">
-						<a href="../classes/_model_column_.columncollbase.html" class="tsd-kind-icon">Column<wbr>Coll<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_column_.columndata.html" class="tsd-kind-icon">Column<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_column_.columndatacoll.html" class="tsd-kind-icon">Column<wbr>Data<wbr>Coll</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
-						<a href="_model_column_.columnfields.html" class="tsd-kind-icon">Column<wbr>Fields</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
 						<a href="_model_column_.icolumn.html" class="tsd-kind-icon">IColumn</a>
 					</li>
@@ -400,9 +410,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 								<a href="_model_column_.icolumndatacollection.html#getcolumnsbytxid" class="tsd-kind-icon">get<wbr>Columns<wbr>ByTx<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="_model_column_.icolumndatacollection.html#merge" class="tsd-kind-icon">merge</a>
 							</li>
 						</ul>
 					</li>
