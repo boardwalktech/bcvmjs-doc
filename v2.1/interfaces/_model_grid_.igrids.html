@@ -67,18 +67,19 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This interface defines operations to access the Grids collection.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">IGrids</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_model_grid_.gridcoll.html" class="tsd-signature-type">GridColl</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -108,13 +109,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.grid.ts#L12">model.grid.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/de1d167/typescript/src/model.grid.ts#L17">model.grid.ts:17</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a Grid (already loaded into the VM) by GridID.
+									It implicitly fetches with respect to the latest Transaction ID.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>gridId: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>GridID to fetch</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_grid_.igridtxdelta.html" class="tsd-signature-type">IGridTxDelta</a></h4>
@@ -131,19 +141,35 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.grid.ts#L14">model.grid.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/de1d167/typescript/src/model.grid.ts#L32">model.grid.ts:32</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fetch a Grid View with reference to a specific range of Transaction IDs.
+										In this view, operations on the Grid, from (and excluding) the &#39;startTxId&#39;,
+									till (and including) the &#39;endTxId&#39; only will be visible.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>gridId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Grid ID</p>
+									</div>
 								</li>
 								<li>
 									<h5>startTxId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>view operations after Transaction ID</p>
+									</div>
 								</li>
 								<li>
 									<h5>endTxId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>view operations till Transaction ID</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_grid_.igridtxdelta.html" class="tsd-signature-type">IGridTxDelta</a></h4>
@@ -160,16 +186,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/b98df01/typescript/src/model.grid.ts#L13">model.grid.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/boardwalktech/Boardwalk-Client-Virtual-Machine-JS/blob/de1d167/typescript/src/model.grid.ts#L23">model.grid.ts:23</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fetch a Grid View with reference to a specific Transaction ID.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>gridId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Grid ID</p>
+									</div>
 								</li>
 								<li>
 									<h5>txId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Transaction ID</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_model_grid_.igridtxdelta.html" class="tsd-signature-type">IGridTxDelta</a></h4>
@@ -220,36 +257,15 @@
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/_model_tx_.html">"model.tx"</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_typescript_fetch_client_generated_api_.html">"typescript-<wbr>fetch-<wbr>client-<wbr>generated/api"</a>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="../modules/_typescript_fetch_client_generated_configuration_.html">"typescript-<wbr>fetch-<wbr>client-<wbr>generated/configuration"</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_grid_.gridalldata.html" class="tsd-kind-icon">Grid<wbr>All<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_grid_.gridcoll.html" class="tsd-kind-icon">Grid<wbr>Coll</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_grid_.gridtxdelta.html" class="tsd-kind-icon">Grid<wbr>TxDelta</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="../classes/_model_grid_.submitstatus.html" class="tsd-kind-icon">Submit<wbr>Status</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
 						<a href="_model_grid_.grid.html" class="tsd-kind-icon">Grid</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
 						<a href="_model_grid_.gridinfo.html" class="tsd-kind-icon">Grid<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
-						<a href="_model_grid_.igridalldata.html" class="tsd-kind-icon">IGrid<wbr>All<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-external">
 						<a href="_model_grid_.igridchange.html" class="tsd-kind-icon">IGrid<wbr>Change</a>
@@ -278,9 +294,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
-						<a href="_model_grid_.neighborhoodpath.html" class="tsd-kind-icon">Neighborhood<wbr>Path</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
