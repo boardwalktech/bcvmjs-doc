@@ -62,61 +62,54 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="code-walkthrough">Code Walkthrough</h1>
-				<h2 id="file-organization">File Organization</h2>
-				<p>All files are prefixed according to the nature of code in it.</p>
-				<table>
-					<thead>
-						<tr>
-							<th>File Group</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>model*</td>
-							<td>Interfaces and Data Structures that are used across all layers of the code.</td>
-						</tr>
-						<tr>
-							<td>restApi*</td>
-							<td>REST API implementation. Currently based on TypeScript-Fetch client library generated from SwaggerHub. Contains code that manipulates API data structures into model data structures. Also contains the REST Stub which can be used to mock this layer.</td>
-						</tr>
-						<tr>
-							<td>impl*</td>
-							<td>This is the implementation and orchestration layer. This is where all other components/ layers are brought together. Contains the IEnvironment implementation, which is tne entry point into this library.</td>
-						</tr>
-						<tr>
-							<td>editor*</td>
-							<td>All implementations that support editing and manipulating a grid. Practically, it should be considered a part of the impl layer.</td>
-						</tr>
-				</tbody></table>
-				<p>The folder &quot;typescript-fetch-client-generated&quot; contains the code generation from SwaggerHub, explained in the next section.</p>
-				<h2 id="using-this-library">Using this Library</h2>
-				<h3 id="code-generation-from-swaggerhub">Code Generation from SwaggerHub</h3>
-				<p>The Boardwalk Server REST APIs are defined in SwaggerHub. Open the &quot;Boardwalk_Cuboid_Services&quot; REST API specification. In the SwaggerHub interface, one can see an option to export/ generate server and client side code. The BWVM uses the code generated using the &quot;typescript-fetch&quot; Client SDK. Following custom code generation options were configured:</p>
+				<h1 id="boardwalk-client-virtual-machine-javascript">Boardwalk Client Virtual Machine - JavaScript</h1>
+				<h2 id="introduction">Introduction</h2>
+				<p>The Boardwalk Client Virtual Machine - JavaScript (henceforth referred to as the BCVMJS) is a client library that simplifies interaction with the Boardwalk Application Engine. The BCVMJS is designed with following goals in mind:</p>
 				<ul>
-					<li><strong>Supports ES6:</strong> true</li>
+					<li>Simplify working with Boardwalk data</li>
+					<li>Simplify access and invocation of the REST APIs in the Boardwalk Application Engine</li>
+					<li>Enable access to multiple &#39;grids&#39; in multiple application engines</li>
+					<li>Load and maintain specific Boardwalk data items on the client-side, acting like a cache</li>
+					<li>Provide a simplified mechanism for manipulating Boardwalk data</li>
+					<li>Accumulate a series of changes on Boardwalk data</li>
+					<li>Submit such a series of changes in a single transaction to the Boardwalk Application Engine</li>
+					<li>Provide access to the history of information stored in the Boardwalk Application Engine</li>
 				</ul>
-				<p>Download the package into the <code>typescript\\src\\typescript-fetch-client-generated\\</code> folder, and extract all its contents directly into that folder (and not in any sub-folder). The <code>restApi*</code> files consume this API and hide the low level calls from the rest of the library. Any change required to adapt to the newly generated code should ideally be isolated to these files only.</p>
-				<h3 id="setting-up-the-factories-dependency-injection-">Setting up the Factories (Dependency Injection)</h3>
-				<p>First, the factories must be setup which implement the basic dependency injection between the layers. Look at <code>indexTest.ts</code> for an example. Note that it uses a RestStub instead of the real API implementation in RestApi. A &#39;production&#39; setup is defined in <code>index.ts</code>.</p>
-				<h3 id="invoking-the-environment">Invoking the Environment</h3>
-				<p>After setting up the factories, create an instance of IEnvironment from the Factories. This is your entry point into the library&#39;s functionality. <code>indexTest.ts</code> contains a function <code>callTest</code> that shows how the IEnvironment can be initialized. <code>loadGrid</code> method is the way to </p>
-				<h3 id="important-interfaces-">Important Interfaces:</h3>
+				<p>To summarize, BCVMJS is a stateful client-side SDK that simplifies manipulation of data residing in an Boardwalk Application Engine.</p>
+				<h2 id="about-this-document">About this document</h2>
+				<p>This document will outline concepts and samples of BCVMJS to help a developer use the library in building an application.</p>
+				<h1 id="how-to-use-the-bcvmjs">How to use the BCVMJS</h1>
+				<h2 id="download-and-reference">Download and Reference</h2>
 				<ul>
-					<li><p><strong>IGridAllData</strong> is the comprehensive data structure containing all grid information. It is derived from the response of the GridChain API.</p>
-					</li>
-					<li><p><strong>IGridTxDelta</strong> is a view on Grid information as of a specific transaction ID. Currently, the implementation is designed to just store the specific transaction based on which rows/ columns/ cells get filtered. It is not a new cache of the data structures.</p>
-					</li>
-					<li><p><strong>IGridTxEditor</strong> is an editor that provides a mechanism to manipulate the grid and track changes. The REST API layer uses this instance to submit all grid changes to the server.</p>
-					</li>
+					<li>Publish BCVMJS with a proprietary license on NPM repository portal?</li>
+					<li>Provide steps and download use the library</li>
 				</ul>
-				<h3 id="running-tests">Running Tests</h3>
-				<p>All Unit Tests are stored in the &quot;Unit Tests&quot; folder. To run just the unit tests:</p>
-				<pre><code>&gt; npm <span class="hljs-built_in">run</span> <span class="hljs-built_in">run</span>.unitTests</code></pre><p>To measure code coverage along with the Unit Tests:</p>
-				<pre><code>&gt; npm <span class="hljs-built_in">run</span> <span class="hljs-built_in">run</span>.testCover</code></pre><p>The scripts use mocha (testing), chai (asserting) and nyc (coverage) for executing the tests.</p>
-				<h2 id="concepts">Concepts</h2>
-				<h3 id="rowkey-and-columnkey">RowKey and ColumnKey</h3>
-				<p>In a readonly Grid, where you are only viewing data, RowKey and ColumnKey point to the respective IDs. In an editable grid, RowKey and ColumnKey point to respective Sequence Numbers.</p>
+				<h2 id="initializing-an-environment">Initializing an Environment</h2>
+				<ul>
+					<li>Environment object: purpose and capabilities</li>
+					<li>Credentials object</li>
+					<li>Setting up the Factories</li>
+				</ul>
+				<h2 id="viewing-a-grid-v-s-editing-a-grid">Viewing a Grid v/s Editing a Grid</h2>
+				<ul>
+					<li>The 2 sets of interfaces, one for viewing and one for editing grids.</li>
+					<li>Key interfaces to get started.</li>
+				</ul>
+				<h2 id="creating-a-grid">Creating a Grid</h2>
+				<ul>
+					<li>Creating a 2x2 grid and adding some values.</li>
+				</ul>
+				<h2 id="loading-an-existing-grid">Loading an existing Grid</h2>
+				<ul>
+					<li>Load an existing grid</li>
+					<li>What is the &quot;Loading&quot; process?</li>
+				</ul>
+				<h2 id="editing-an-existing-grid">Editing an existing Grid</h2>
+				<ul>
+					<li>modifying values in a 2x2 grid</li>
+				</ul>
+				<h1 id="library-documentation">Library Documentation</h1>
+				<p>Refer to the documentation of specific modules and classes for more information about methods and behaviors supported in the library. This documentation specifically includes only such elements which are consumed by a third-party user. There are several elements in the library which are for its internal working; the library documentation doesn&#39;t cover such elements.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
