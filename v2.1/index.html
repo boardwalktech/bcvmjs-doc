@@ -71,7 +71,7 @@
 					<li>Enable access to multiple &#39;grids&#39; in multiple application engines</li>
 					<li>Load and maintain specific Boardwalk data items on the client-side, acting like a cache</li>
 					<li>Provide a simplified mechanism for manipulating Boardwalk data</li>
-					<li>Accumulate a series of changes on Boardwalk data</li>
+					<li>Accumulate a series of changes on Boardwalk data, without having to submit to the server for each change.</li>
 					<li>Submit such a series of changes in a single transaction to the Boardwalk Application Engine</li>
 					<li>Provide access to the history of information stored in the Boardwalk Application Engine</li>
 				</ul>
@@ -80,34 +80,92 @@
 				<p>This document will outline concepts and samples of BCVMJS to help a developer use the library in building an application.</p>
 				<h1 id="how-to-use-the-bcvmjs">How to use the BCVMJS</h1>
 				<h2 id="download-and-reference">Download and Reference</h2>
+				<p>Connect with BoardwalkTech Customer Support for downloading the BCVMJS library. Documentation is available at <a href="http://bcvmjs-doc.boardwalktech.com">http://bcvmjs-doc.boardwalktech.com</a> .</p>
+				<h2 id="initializing-an-environment-key-interfaces">Initializing an Environment &amp; Key Interfaces</h2>
+				<p>Firstly, import the BCVMJS into your web page.</p>
+				<pre><code class="language-javascript">&lt;script src=<span class="hljs-string">"js/bcvm-v2.1.0.js"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+				<p>Importing the library also initializes it. It creates a local variable <code>bcvm</code> through which the library can be accessed.</p>
+				<p>To use the library, one must instanciate the Environment object. This object can load multiple grids into the client, provide editors for to manpipulate data, and enable communication with BAE. To initialize an Environment, you need the <code>Credentials</code> for accessing the BAE:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> env = bcvm.Srv().CreateEnvironment({
+    <span class="hljs-attr">usr</span>: <span class="hljs-string">"username"</span>,
+    <span class="hljs-attr">membershipId</span>: <span class="hljs-number">1234</span>,
+    <span class="hljs-attr">nhPath</span>: <span class="hljs-string">"NH_Path"</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">"password"</span>,
+    <span class="hljs-attr">urlPrefix</span>: <span class="hljs-string">"http://server.boardwalktech.com/BAE_4_5/rest/v1"</span>,
+});</code></pre>
+				<p>Multiple instances of Environment object can be created such that</p>
 				<ul>
-					<li>Publish BCVMJS with a proprietary license on NPM repository portal?</li>
-					<li>Provide steps and download use the library</li>
-				</ul>
-				<h2 id="initializing-an-environment">Initializing an Environment</h2>
-				<ul>
-					<li>Environment object: purpose and capabilities</li>
-					<li>Credentials object</li>
-					<li>Setting up the Factories</li>
+					<li>each pointing to same server with same credentials</li>
+					<li>each pointing to same server with different credentials</li>
+					<li>each pointing to multiple servers with respective credentials</li>
 				</ul>
 				<h2 id="viewing-a-grid-v-s-editing-a-grid">Viewing a Grid v/s Editing a Grid</h2>
+				<p>The library comes with 2 sets of interfaces: one for viewing and one for editing grids. A typical Boardwalk Grid can contain data in the order of millions of cells. Hence the objects for viewing data are optimized for lower memory consumption, and do not support editing of the grid by default. The editor objects must be explicitly created for data manipulation. The key interfaces in this library are:</p>
 				<ul>
-					<li>The 2 sets of interfaces, one for viewing and one for editing grids.</li>
-					<li>Key interfaces to get started.</li>
+					<li>IGridTxDelta</li>
+					<li>IGridEditor</li>
 				</ul>
 				<h2 id="creating-a-grid">Creating a Grid</h2>
-				<ul>
-					<li>Creating a 2x2 grid and adding some values.</li>
-				</ul>
+				<p>The following sample creates a Grid with 2 Columns and 5 Rows, and uses loops to initialize the cells to a value:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> ge = env.createGridEditor({
+    <span class="hljs-attr">collabId</span>: <span class="hljs-number">1234</span>,
+    <span class="hljs-attr">wbId</span>: <span class="hljs-number">4321</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"G"</span> + <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toISOString(), <span class="hljs-comment">// to ensure uniqueness in grid name</span>
+    description: <span class="hljs-string">"Test Sample Grid"</span>
+});
+
+<span class="hljs-comment">// insert 2 columns</span>
+<span class="hljs-keyword">let</span> ce = <span class="hljs-literal">null</span>;
+ce = ge.insertColumnAtStart(<span class="hljs-string">"1"</span>);
+ge.insertColumn(<span class="hljs-string">"2"</span>, ce);
+
+<span class="hljs-comment">// insert 5 rows</span>
+<span class="hljs-keyword">let</span> re = <span class="hljs-literal">null</span>;
+re = ge.insertRowAtStart(<span class="hljs-string">"1"</span>);
+re = ge.insertRow(<span class="hljs-string">"2"</span>, re);
+re = ge.insertRow(<span class="hljs-string">"3"</span>, re);
+re = ge.insertRow(<span class="hljs-string">"4"</span>, re);
+ge.insertRow(<span class="hljs-string">"5"</span>, re);
+
+<span class="hljs-comment">// use loops to initialize values</span>
+ge.getRows().forEach(<span class="hljs-function">(<span class="hljs-params">rv, ri</span>) =&gt;</span> {
+    ge.getColumns().forEach(<span class="hljs-function">(<span class="hljs-params">cv, ci</span>) =&gt;</span> {
+        ge.getCellEditorRC(rv.getRowKey(), cv.getColumnKey()).stringValue = ri + <span class="hljs-string">" : "</span> + ci;
+    });
+});
+
+<span class="hljs-comment">// submit to grid</span>
+env.submitGrid(ge, { <span class="hljs-attr">critical</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">criticalLevel</span>: <span class="hljs-number">16</span> }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ss</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Grid Creation Successful"</span>, ss.GridId);
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Grid Creation Failed"</span>, err);
+});</code></pre>
 				<h2 id="loading-an-existing-grid">Loading an existing Grid</h2>
-				<ul>
-					<li>Load an existing grid</li>
-					<li>What is the &quot;Loading&quot; process?</li>
-				</ul>
+				<p>Mostly, the data manipulation may happen on an existing grid. Such a grid must first be loaded into the VM Environment, and then an editor can be used to manipulate that data. The &#39;Load&#39; process in the VM takes a snapshot of the grid and makes it available in the VM, like caching.</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">let</span> gridId = <span class="hljs-number">1234567</span>;
+env.loadGridById(gridId).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Grid Load Successful"</span>, gridId);
+
+    <span class="hljs-comment">// ... manipulate the grid here</span>
+});</code></pre>
 				<h2 id="editing-an-existing-grid">Editing an existing Grid</h2>
-				<ul>
-					<li>modifying values in a 2x2 grid</li>
-				</ul>
+				<p>Below sample creates an editor on an existing grid, already loaded in the Environment.</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// create an editor on a grid loaded in the environment</span>
+<span class="hljs-keyword">let</span> ge2 = env.getGridEditor(gridId);
+
+<span class="hljs-comment">// add a row at the end, and update its cells values</span>
+<span class="hljs-keyword">let</span> re2 = ge2.insertRowAtEnd(<span class="hljs-string">"Last Row"</span>);
+<span class="hljs-keyword">let</span> cells = ge2.cells.getCellsByRowKey(re2.getRowKey());
+cells.forEach(<span class="hljs-function">(<span class="hljs-params">lv, li</span>) =&gt;</span> {
+    lv.stringValue = <span class="hljs-string">"Last Row "</span> + li;
+});
+
+<span class="hljs-comment">// submit grid</span>
+env.submitGrid(ge2, { <span class="hljs-attr">critical</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">criticalLevel</span>: <span class="hljs-number">16</span> }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ss</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Grid Updation Successful"</span>, ss);
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Grid Updation Failure"</span>, err);
+});</code></pre>
 				<h1 id="library-documentation">Library Documentation</h1>
 				<p>Refer to the documentation of specific modules and classes for more information about methods and behaviors supported in the library. This documentation specifically includes only such elements which are consumed by a third-party user. There are several elements in the library which are for its internal working; the library documentation doesn&#39;t cover such elements.</p>
 			</div>
